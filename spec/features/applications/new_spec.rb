@@ -18,4 +18,19 @@ RSpec.describe 'Applications new page' do
     expect(page).to have_content('PA')
     expect(page).to have_content('15238')
   end
+
+  describe 'when the form is not fully completed' do
+    it 'displays a message that says all fields must be filled' do
+      visit '/applications/new'
+
+      fill_in 'name', with: 'Jen'
+      fill_in 'street_address', with: '123 Street'
+      fill_in 'city', with: 'Pittsburgh'
+
+      click_button "submit"
+
+      expect(current_path).to eq('/applications/new')
+      expect(page).to have_content('Error: Please fill in all fields before submitting')
+    end
+  end
 end
