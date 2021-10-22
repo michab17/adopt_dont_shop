@@ -6,6 +6,9 @@ class ApplicationsController < ApplicationController
     else
       @pets = []
     end
+    if params[:adopt]
+      @application.names_of_pets = params[:adopt]
+    end
   end
 
   def new

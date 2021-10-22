@@ -16,10 +16,15 @@
   <%= form.text_field :search %>
   <%= form.submit value: "Search" %>
 <% end %>
-
+<br>
 <% @pets.each do |pet| %>
-  Name: <%= pet.name %><br>
+  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
+    <%= form.hidden_field :adopt, :value => pet.name %>
+    <%= form.label  "Name: #{pet.name}"%>
+    <%= form.submit value: "Adopt this Pet" %>
+  <% end %>
   Age: <%= pet.age %><br>
   Breed: <%= pet.breed %><br>
   Adoptable?: <%= pet.adoptable %><br>
+  <br>
 <% end %>
