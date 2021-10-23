@@ -6,11 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-shelter1 = Shelter.create(name: 'Shelter1', city: 'Pittsburgh PA', foster_program: false, rank: 9)
-charles = Pet.create(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter1.id)
+shelter1 = Shelter.create!(name: 'Awesome Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
+shelter2 = Shelter.create!(name: 'Best Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
+shelter3 = Shelter.create!(name: 'Cool Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
 
-shelter2 = Shelter.create(name: 'Shelter2', city: 'Madison WI', foster_program: false, rank: 1)
-johnny = Pet.create(name: 'Johnny', age: 10, breed: 'Chihuahua', adoptable: true, shelter_id: shelter2.id)
+pet1 = Pet.create!(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter1.id)
+pet2 = Pet.create!(name: 'Charley', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter2.id)
+pet3 = Pet.create!(name: 'Char', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter3.id)
 
-shelter2 = Shelter.create(name: 'Shelter2', city: 'Madison WI', foster_program: false, rank: 1)
-john = Pet.create(name: 'John', age: 5, breed: 'Chihuahua', adoptable: true, shelter_id: shelter2.id)
+app1 = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "I really like dogs", names_of_pets: "#{pet1.name}", status: 'Pending')
+app2 = Application.create!(name: 'Micha', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "I really like dogs", names_of_pets: "#{pet2.name}", status: 'Pending')
+app3 = Application.create!(name: 'Kevin', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "I really like dogs", names_of_pets: "#{pet3.name}", status: 'In Progress')
+
+PetApplication.create!(pet: pet1, application: app1)
+PetApplication.create!(pet: pet2, application: app2)
+PetApplication.create!(pet: pet3, application: app3)
