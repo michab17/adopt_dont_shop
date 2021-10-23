@@ -12,4 +12,8 @@ class Pet < ApplicationRecord
   def self.adoptable
     where(adoptable: true)
   end
+
+  def self.pending_shelters
+    joins(applications: :pet_applications).where(applications: {status: 'Pending'})
+  end
 end
