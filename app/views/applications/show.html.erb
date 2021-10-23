@@ -9,22 +9,30 @@
   <%= @application.status %><br>
 </p>
 
-<h4>Add a Pet to this Application</h4>
-
-<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
-  <%= form.label 'Search by name:' %>
-  <%= form.text_field :search %>
-  <%= form.submit value: "Search" %>
-<% end %>
-<br>
-<% @pets.each do |pet| %>
-  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
-    <%= form.hidden_field :adopt, :value => pet.name %>
-    <%= form.label  "Name: #{pet.name}"%>
-    <%= form.submit value: "Adopt this Pet" %>
+<% if @application.description == "" %>
+  <% if @pet_added == true %>
+    <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
+      <%= form.label 'Why would you be a good owner for these pet(s)' %>
+      <%= form.text_field :description %>
+      <%= form.submit value: 'Submit this Application' %>
+    <% end %>
   <% end %>
-  Age: <%= pet.age %><br>
-  Breed: <%= pet.breed %><br>
-  Adoptable?: <%= pet.adoptable %><br>
+  <h4>Add a Pet to this Application</h4>
+  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
+    <%= form.label 'Search by name:' %>
+    <%= form.text_field :search %>
+    <%= form.submit value: "Search" %>
+  <% end %>
   <br>
+  <% @pets.each do |pet| %>
+    <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
+      <%= form.hidden_field :adopt, :value => pet.name %>
+      <%= form.label  "Name: #{pet.name}"%>
+      <%= form.submit value: "Adopt this Pet" %>
+    <% end %>
+    Age: <%= pet.age %><br>
+    Breed: <%= pet.breed %><br>
+    Adoptable?: <%= pet.adoptable %><br>
+    <br>
+  <% end %>
 <% end %>
