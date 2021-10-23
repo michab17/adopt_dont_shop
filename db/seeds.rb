@@ -13,4 +13,4 @@ shelter2 = Shelter.create(name: 'Shelter2', city: 'Madison WI', foster_program: 
 johnny = Pet.create(name: 'Johnny', age: 10, breed: 'Chihuahua', adoptable: true, shelter_id: shelter2.id)
 
 shelter2 = Shelter.create(name: 'Shelter2', city: 'Madison WI', foster_program: false, rank: 1)
-johnny = Pet.create(name: 'John', age: 5, breed: 'Chihuahua', adoptable: true, shelter_id: shelter2.id)
+john = Pet.create(name: 'John', age: 5, breed: 'Chihuahua', adoptable: true, shelter_id: shelter2.id)
