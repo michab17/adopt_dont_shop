@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   get '/applications/new', to: 'applications#new'
   get '/applications/:id', to: 'applications#show', as: :applications_show
   post '/applications/:id', to: 'applications#create'
+
+  get '/admin/shelters', to: 'admin#index'
 end
