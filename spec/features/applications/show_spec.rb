@@ -74,5 +74,21 @@ RSpec.describe 'Applications Show Page' do
       expect(page).to have_content('Pending')
       expect(page).to_not have_content('Search')
     end
+
+    it 'returns pets that partially match the search' do
+      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')
+      shelter = Shelter.create!(name: 'Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
+      pet = Pet.create!(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
+      pet = Pet.create!(name: 'Charley', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
+  
+      visit "/applications/#{app.id}"
+
+      fill_in "search", with: 'Charle'
+
+      click_button 'Search'
+
+      expect(page).to have_content('charles')
+      expect(page).to have_content('charley')
+    end
   end
 end

@@ -11,7 +11,7 @@ class ApplicationsController < ApplicationController
       @application = Application.find(params[:id])
     end
     if params[:search]
-      @pets = Pet.search(params[:search])
+      @pets = Pet.where("name LIKE :query", query: "%#{params[:search]}%")
     else
       @pets = []
     end
