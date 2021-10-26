@@ -4,8 +4,10 @@
   <%= @application.city %>
   <%= @application.state %>
   <%= @application.zip_code %><br>
+  <% @application.pets.each do |pet| %>
+    <%= pet.name %>
+  <% end %><br>
   <%= @application.description %><br>
-  <%= @application.names_of_pets %><br>
   <%= @application.status %><br>
 </p>
 
@@ -24,9 +26,9 @@
     <%= form.submit value: "Search" %>
   <% end %>
   <br>
-  <% @pets.each do |pet| %>
+  <% @searched_pets.each do |pet| %>
     <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
-      <%= form.hidden_field :adopt, :value => pet.name %>
+      <%= form.hidden_field :adopt, :value => pet.id %>
       <%= form.label  "Name: #{pet.name}"%>
       <%= form.submit value: "Adopt this Pet" %>
     <% end %>
