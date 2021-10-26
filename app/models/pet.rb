@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :name, presence: true # , uniqueness: {case_sensitive: false}
   validates :age, presence: true, numericality: true
   belongs_to :shelter
   has_many :pet_applications
