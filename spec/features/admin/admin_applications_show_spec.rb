@@ -26,11 +26,10 @@ RSpec.describe 'Admin Applications Show page' do
 
     visit "admin/applications/#{app1.id}"
 
-    within("#{pet1.name}") do
+    within("id-#{pet1.id}") do
       click_button 'Approve'
+      expect(page).to have_content('Charles: Approved')
     end
-
-    expect(page).to have_content('Charles Approved')
   end
 
   it 'has buttons to approve pets in an application' do
@@ -42,7 +41,7 @@ RSpec.describe 'Admin Applications Show page' do
     PetApplication.create!(pet: pet1, application: app1)
 
     visit "admin/applications/#{app1.id}"
-    save_and_open_page
+
     expect(page).to have_content("#{pet1.name}")
     expect(page).to have_button("Deny")
   end
