@@ -1,22 +1,14 @@
 class ApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:id])
-    if @application.names_of_pets == nil
-      @application.names_of_pets = params[:adopt]
-      @application.save
-      @application = Application.find(params[:id])
-    elsif @application.names_of_pets != nil
-      @application.names_of_pets = @application.names_of_pets + " " + "#{params[:adopt]}"
-      @application.save
-      @application = Application.find(params[:id])
+    if params[:adopt]
+      PetApplication.create!(pet: Pet.find(params[:adopt]), application: Application.find(@application.id))
+      @pet_added = true
     end
     if params[:search]
-      @pets = Pet.where("lower(name) LIKE ?", "%#{params[:search].downcase}%")
+      @searched_pets = Pet.where("lower(name) LIKE ?", "%#{params[:search].downcase}%")
     else
-      @pets = []
-    end
-    if @application.names_of_pets != nil
-      @pet_added = true
+      @searched_pets = []
     end
     if params[:description]
       @application.description = params[:description]

@@ -1,0 +1,15 @@
+<p>
+  <%= @application.street_address %><br>
+  <%= @application.city %>
+  <%= @application.state %>
+  <%= @application.zip_code %><br>
+  <%= @application.description %><br>
+  <% @application.pets.each do |pet|%>
+    <div id="id-<%pet.id%>">
+      <% if params[pet.name] == nil && params[pet.id] == nil %>
+        <%= pet.name %><%= button_to "Approve", admin_show_path(status: "Approved"), method: :patch %><%= button_to "Deny", admin_show_path(status: "Denied"), method: :patch %><br>
+      <% end %>
+    </div>
+  <% end %>
+  <%= @application.status %><br>
+</p>
