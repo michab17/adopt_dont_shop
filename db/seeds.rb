@@ -16,6 +16,6 @@ pet3 = Pet.create!(name: 'Char', age: 2, breed: 'Doberman', adoptable: true, she
 
 app1 = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "I really like dogs", status: 'Pending')
 
-PetApplication.create!(pet: pet1, application: app1)
-PetApplication.create!(pet: pet2, application: app1)
-PetApplication.create!(pet: pet3, application: app1)
+PetApplication.create!(pet: pet1, application: app1, status: "")
+PetApplication.create!(pet: pet2, application: app1, status: "")
+PetApplication.create!(pet: pet3, application: app1, status: "")

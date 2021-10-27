@@ -1,5 +1,8 @@
 <% @shelters.each do |shelter| %>
-  <%= shelter.name %><br>
+  <p>
+    <%= shelter.name %>
+    <%= link_to "Delete", delete_shelter_path(shelter) %>
+  </p>
 <% end %>
 
 <div id='pending-shelters'>

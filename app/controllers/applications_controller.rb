@@ -2,7 +2,7 @@ class ApplicationsController < ApplicationController
   def show
     @application = Application.find(params[:id])
     if params[:adopt]
-      PetApplication.create!(pet: Pet.find(params[:adopt]), application: Application.find(@application.id))
+      PetApplication.create!(pet: Pet.find(params[:adopt]), application: Application.find(@application.id), status: "")
       @pet_added = true
     end
     if params[:search]
