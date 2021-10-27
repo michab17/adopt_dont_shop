@@ -13,18 +13,10 @@
 
 <% if @application.description == "" %>
   <% if @pet_added == true %>
-    <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
-      <%= form.label 'Why would you be a good owner for these pet(s)' %>
-      <%= form.text_field :description %>
-      <%= form.submit value: 'Submit this Application' %>
-    <% end %>
+    <%= render "description" %>
   <% end %>
   <h4>Add a Pet to this Application</h4>
-  <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
-    <%= form.label 'Search by name:' %>
-    <%= form.text_field :search %>
-    <%= form.submit value: "Search" %>
-  <% end %>
+  <%= render "search" %>
   <br>
   <% @searched_pets.each do |pet| %>
     <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>

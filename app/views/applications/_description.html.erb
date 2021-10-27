@@ -1,0 +1,5 @@
+<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
+  <%= form.label 'Why would you be a good owner for these pet(s)' %>
+  <%= form.text_field :description %>
+  <%= form.submit value: 'Submit this Application' %>
+<% end %>
