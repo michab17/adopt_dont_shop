@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Applications Show Page' do
   it 'displays all of the applications attributes' do
-    app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')  
+    app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", status: 'In Progress')  
     visit "/applications/#{app.id}"
 
     expect(page).to have_content('Jen')
@@ -15,7 +15,7 @@ RSpec.describe 'Applications Show Page' do
 
   describe 'searching for Pets for an Application' do
     it 'has a search field where the user can search for pets' do
-      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')
+      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", status: 'In Progress')
       visit "/applications/#{app.id}"
 
       expect(page).to have_content "Add a Pet to this Application"
@@ -23,7 +23,7 @@ RSpec.describe 'Applications Show Page' do
     end
 
     it 'displays the pets under the search bar when searched' do
-      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')
+      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", status: 'In Progress')
       shelter = Shelter.create!(name: 'Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
       pet = Pet.create!(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
   
@@ -40,7 +40,7 @@ RSpec.describe 'Applications Show Page' do
     end
 
     it 'give the user an option to add a pet to an application' do
-      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')      
+      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", status: 'In Progress')      
       shelter = Shelter.create!(name: 'Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
       pet = Pet.create!(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
   
@@ -54,7 +54,7 @@ RSpec.describe 'Applications Show Page' do
     end
 
     it 'can complete the application submitting process' do
-      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')
+      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", status: 'In Progress')
       shelter = Shelter.create!(name: 'Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
       pet = Pet.create!(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
   
@@ -76,7 +76,7 @@ RSpec.describe 'Applications Show Page' do
     end
 
     it 'returns pets that partially match the search' do
-      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')
+      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", status: 'In Progress')
       shelter = Shelter.create!(name: 'Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
       pet = Pet.create!(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
       pet = Pet.create!(name: 'Charley', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
@@ -92,7 +92,7 @@ RSpec.describe 'Applications Show Page' do
     end
 
     it 'returns pets in a case-insensitive manner' do
-      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", names_of_pets: "", status: 'In Progress')
+      app = Application.create!(name: 'Jen', street_address: '123 Street Dr', city: 'Pittsburgh', state: 'PA', zip_code: '15238', description: "", status: 'In Progress')
       shelter = Shelter.create!(name: 'Shelter', city: 'Pittsburgh PA', foster_program: false, rank: 9)
       pet = Pet.create!(name: 'Charles', age: 2, breed: 'Doberman', adoptable: true, shelter_id: shelter.id)
   
