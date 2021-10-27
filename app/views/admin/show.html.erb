@@ -4,12 +4,12 @@
   <%= @application.state %>
   <%= @application.zip_code %><br>
   <%= @application.description %><br>
-  <% @application.pets.each do |pet|%>
-    <div id="id-<%pet.id%>">
-      <% if params[:pet_id] != pet.id %>
+  <% @application.pets.each do |pet| %>
+    <div id="id-<%= pet.id %>">
+      <% if params[:pet_id] == nil %>
         <%= pet.name %>
-        <%= button_to "Approve", admin_show_path(@application.id), method: :patch, params: { pet_id: pet.id, status: "approved" } %>
-        <%= button_to "Deny", admin_show_path(@application.id), method: :patch, params: { pet_id: pet.id, status: "denied" } %><br>
+        <%= button_to "Approve", admin_show_path(@application.id), method: :patch, params: { pet_id: pet.id, status: "Approved" } %>
+        <%= button_to "Deny", admin_show_path(@application.id), method: :patch, params: { pet_id: pet.id, status: "Denied" } %><br>
       <% end %>
       <% if @pa != nil %>
         <%= pet.name %>: <%= @pa.status %>

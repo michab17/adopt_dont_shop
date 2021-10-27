@@ -6,11 +6,11 @@ class AdminController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
-    if params[:status] == "approved"
+    if params[:status] == "Approved"
       @pa = PetApplication.find_by(pet_id: params[:pet_id], application_id: @application.id)
       @pa.status = "Approved"
       @pa.save
-    elsif params[:status] == "denied"
+    elsif params[:status] == "Denied"
       @pa = PetApplication.find_by(pet_id: params[:pet_id], application_id: @application.id)
       @pa.status = "Denied"
       @pa.save
